@@ -95,16 +95,16 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         .nav-btn {
             background: transparent;
             border: 1px solid transparent;
             color: var(--text-muted);
-            padding: 10px 12px;
+            padding: 9px 12px;
             text-align: left;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
@@ -301,19 +301,25 @@
                     <span>■</span> Présentation
                 </button>
                 <button class="nav-btn" onclick="switchTab('tab-missions', this)">
-                    <span>■</span> Mission de la Division
+                    <span>■</span> Missions de la Division
                 </button>
-                <button class="nav-btn" onclick="switchTab('tab-domaines', this)">
-                    <span>■</span> Domaines d'Intervention
+                <button class="nav-btn" onclick="switchTab('tab-controles', this)">
+                    <span>■</span> Contrôles & Cayo
                 </button>
-                <button class="nav-btn" onclick="switchTab('tab-pouvoirs', this)">
-                    <span>■</span> Pouvoirs & Coopération
+                <button class="nav-btn" onclick="switchTab('tab-enquetes', this)">
+                    <span>■</span> Enquêtes & Entreprises
+                </button>
+                <button class="nav-btn" onclick="switchTab('tab-mandats', this)">
+                    <span>■</span> Mandats & Expulsions
                 </button>
                 <button class="nav-btn" onclick="switchTab('tab-organisation', this)">
-                    <span>■</span> Organisation Interne
+                    <span>■</span> Organisation & Bureaux
                 </button>
-                <button class="nav-btn" onclick="switchTab('tab-profil', this)">
-                    <span>■</span> Profil & Objectifs
+                <button class="nav-btn" onclick="switchTab('tab-hierarchie', this)">
+                    <span>■</span> Hiérarchie & Dossiers
+                </button>
+                <button class="nav-btn" onclick="switchTab('tab-objectifs', this)">
+                    <span>■</span> Objectifs & Conclusion
                 </button>
             </nav>
 
@@ -329,195 +335,219 @@
             <div id="tab-presentation" class="tab-pane active">
                 <div class="section-header">
                     <h3>Présentation Générale</h3>
-                    <div class="badge-federal">Agence Fédérale</div>
+                    <div class="badge-federal">Division Fédérale</div>
                 </div>
                 <div class="card" style="border-left-color: var(--accent-orange);">
-                    <h4>Mandat & Juridiction Fédérale</h4>
+                    <h4>Statut et Autonomie</h4>
                     <p style="margin-bottom: 12px;">
-                        La <b>Division de l'Immigration, des Enquêtes et des Expulsions (DIEE)</b> est une agence fédérale spécialisée dans l'application des lois relatives à l'immigration, à l'identification des ressortissants étrangers et à l'exécution des mesures administratives ou judiciaires relevant de sa compétence.
+                        La <b>Division de l'Immigration, des Enquêtes et des Expulsions (DIEE)</b> est une division fédérale spécialisée dans l'application des lois relatives à l'immigration, au contrôle des ressortissants étrangers, aux enquêtes administratives et judiciaires ainsi qu'à l'exécution des mesures d'expulsion.
                     </p>
                     <p style="margin-bottom: 12px;">
-                        La DIEE agit sur l'ensemble du territoire fédéral et constitue l'autorité de référence en matière de contrôle migratoire, d'enquêtes liées à l'immigration et de localisation des individus faisant l'objet d'une mesure d'expulsion.
+                        Grâce à son statut fédéral, la DIEE dispose d'une compétence lui permettant d'intervenir sur l'ensemble du territoire lorsque ses missions concernent directement l'immigration, l'identification d'un ressortissant étranger ou l'exécution d'une procédure relevant de son domaine.
                     </p>
                     <p>
-                        Grâce à ses compétences fédérales, la division peut être déployée dans toutes les juridictions afin de garantir une application uniforme de la législation migratoire.
+                        La division est entièrement autonome dans son fonctionnement et dispose de sa propre hiérarchie, de ses propres procédures et de ses propres unités internes.
                     </p>
                 </div>
                 <div class="motto-box">
-                    « Identifier. Enquêter. Exécuter. »
+                    « Identifier. Enquêter. Expulser. »
                 </div>
             </div>
 
             <!-- 2. MISSIONS -->
             <div id="tab-missions" class="tab-pane">
                 <div class="section-header">
-                    <h3>Mission de la Division</h3>
+                    <h3>Missions de la Division</h3>
                 </div>
                 <div class="card">
-                    <h4>Objectifs Centraux</h4>
-                    <p style="margin-bottom: 10px;">La DIEE a pour mission principale de :</p>
+                    <h4>Objectifs Fondamentaux</h4>
+                    <p style="margin-bottom: 10px;">La DIEE a pour mission de :</p>
                     <ul>
-                        <li><span>Garantir</span> le respect des lois migratoires.</li>
-                        <li><span>Contrôler</span> la situation administrative des ressortissants étrangers.</li>
-                        <li><span>Identifier</span> les personnes en situation irrégulière.</li>
-                        <li><span>Détecter</span> les fraudes documentaires.</li>
-                        <li><span>Mener</span> des enquêtes relatives à l'immigration.</li>
-                        <li><span>Rechercher</span> les individus faisant l'objet d'un mandat ou d'une mesure d'expulsion.</li>
-                        <li><span>Assurer</span> l'exécution des décisions administratives et judiciaires relevant de son domaine.</li>
+                        <li><span>Veiller</span> au respect de la législation relative à l'immigration.</li>
+                        <li><span>Effectuer</span> des contrôles d'identité dans le cadre de ses compétences fédérales.</li>
+                        <li><span>Vérifier</span> la situation administrative des ressortissants étrangers.</li>
+                        <li><span>Identifier</span> les personnes présentes illégalement sur le territoire.</li>
+                        <li><span>Détecter</span> les fraudes liées aux identités et aux documents administratifs.</li>
+                        <li><span>Mener</span> des enquêtes liées à l'immigration.</li>
+                        <li><span>Rechercher</span> les individus faisant l'objet d'une procédure d'expulsion.</li>
+                        <li><span>Exécuter</span> les décisions et mandats relevant de sa compétence.</li>
+                        <li><span>Maintenir</span> une base de renseignement interne permettant le suivi des dossiers.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- 3. DOMAINES D'INTERVENTION -->
-            <div id="tab-domaines" class="tab-pane">
+            <!-- 3. CONTROLES & CAYO -->
+            <div id="tab-controles" class="tab-pane">
                 <div class="section-header">
-                    <h3>Domaines d'Intervention</h3>
+                    <h3>Contrôles d'Identité & Ressortissants de Cayo</h3>
                 </div>
                 <div class="grid-2">
                     <div class="card">
-                        <h4>Contrôle de l'Immigration</h4>
-                        <p style="margin-bottom: 6px; font-size:0.82rem; color:var(--text-muted);">Activité des agents :</p>
+                        <h4>Cadre des Contrôles d'Identité</h4>
+                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Objectifs des vérifications :</p>
                         <ul>
-                            <li>Contrôles d'identité et vérifications de statut.</li>
-                            <li>Contrôles documentaires, permis, visas et autorisations.</li>
-                            <li>Contrôles ciblés dans le cadre d'enquêtes.</li>
+                            <li>Vérifier l'identité et le statut migratoire d'un ressortissant.</li>
+                            <li>Contrôler les documents officiels et la régularité de présence.</li>
+                            <li>Vérifier l'existence d'une procédure ou d'un signalement.</li>
+                            <li>Détecter l'utilisation de fausses identités ou de faux documents.</li>
                         </ul>
-                        <p style="margin-top: 10px; margin-bottom: 6px; font-size:0.82rem; color:var(--text-muted);">Réalisés lors de :</p>
+                        <p style="margin-top: 10px; font-size:0.82rem; color:var(--text-muted);">Réalisés de manière inopinée ou ciblée sur renseignement.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Ressortissants de Cayo</h4>
+                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Attention particulière suite aux récents événements :</p>
                         <ul>
-                            <li>Opérations de sécurisation & dispositifs routiers.</li>
-                            <li>Opérations conjointes et enquêtes fédérales.</li>
+                            <li><span>Vérification</span> de l'identité et de la situation administrative.</li>
+                            <li><span>Identification</span> d'éventuels liens avec des individus recherchés.</li>
+                            <li><span>Contrôle</span> d'une éventuelle procédure fédérale à leur encontre.</li>
+                            <li><span>Recueil</span> de renseignement en cas d'élément suspect.</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size:0.82rem; color:var(--text-muted);">Attention : Ne peuvent être fondés uniquement sur la nationalité.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. ENQUETES & ENTREPRISES -->
+            <div id="tab-enquetes" class="tab-pane">
+                <div class="section-header">
+                    <h3>Enquêtes & Contrôles d'Entreprises</h3>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <h4>Service d'Enquête</h4>
+                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Domaines traités :</p>
+                        <ul>
+                            <li>Fraudes à l'identité et faux documents.</li>
+                            <li>Entrées ou séjours irréguliers et réseaux organisés.</li>
+                            <li>Individus sous procédure fédérale.</li>
+                            <li>Entreprises suspectées d'activités illégales liées à l'immigration.</li>
                         </ul>
                     </div>
                     <div class="card">
-                        <h4>Enquêtes Administratives</h4>
-                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Investigations menées :</p>
+                        <h4>Contrôles d'Entreprises</h4>
+                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Vérifications sur site :</p>
                         <ul>
-                            <li><span>Vérification</span> de l'authenticité des documents administratifs.</li>
-                            <li><span>Identification</span> des fraudes à l'identité.</li>
-                            <li><span>Détermination</span> de la situation administrative réelle.</li>
-                            <li><span>Contrôle</span> du respect des obligations légales.</li>
-                            <li><span>Établissement</span> des faits pour procédures judiciaires.</li>
+                            <li>Identité des employés et statut des étrangers employés.</li>
+                            <li>Documents administratifs, registres et informations d'enquête.</li>
+                            <li>Détection d'éventuelles activités frauduleuses.</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size:0.82rem; color:var(--text-muted);">Intervention encadrée par mandat si nécessaire.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. MANDATS & EXPULSIONS -->
+            <div id="tab-mandats" class="tab-pane">
+                <div class="section-header">
+                    <h3>Mandats & Procédures d'Expulsion</h3>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <h4>Types de Mandats</h4>
+                        <ul>
+                            <li><span>Mandat de perquisition :</span> Recherche d'éléments utiles dans un lieu déterminé.</li>
+                            <li><span>Mandat d'arrêt :</span> Interpellation d'un individu sous décision judiciaire.</li>
+                            <li><span>Mandat fédéral :</span> Intervention dans le cadre d'une procédure fédérale directe.</li>
                         </ul>
                     </div>
                     <div class="card">
-                        <h4>Localisation & Expulsions</h4>
-                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Missions d'exécutions :</p>
+                        <h4>Procédure d'Expulsion</h4>
                         <ul>
-                            <li><span>Retrouver</span> les personnes visées par une expulsion.</li>
-                            <li><span>Rechercher</span> les individus sous identité frauduleuse.</li>
-                            <li><span>Vérifier</span> les signalements transmis.</li>
-                            <li><span>Appliquer</span> les décisions administratives et mandats.</li>
-                            <li><span>Assurer</span> l'interpellation et le suivi des procédures.</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h4>Contrôles d'Identité Renforcés</h4>
-                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Opérations spéciales :</p>
-                        <ul>
-                            <li><span>Vérification</span> globale des personnes sur le territoire.</li>
-                            <li><span>Identification</span> des individus sous surveillance.</li>
-                            <li><span>Détection</span> des irrégularités administratives.</li>
-                            <li><span>Traçabilité</span> rigoureuse de chaque contrôle effectué.</li>
+                            <li><span>Identification</span> et vérification de la mesure.</li>
+                            <li><span>Localisation</span> et interpellation (si autorisée).</li>
+                            <li><span>Notification</span> de la décision et prise en charge de l'éloignement.</li>
+                            <li><span>Clôture</span> et archivage du dossier.</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. POUVOIRS & COOPÉRATION -->
-            <div id="tab-pouvoirs" class="tab-pane">
-                <div class="section-header">
-                    <h3>Pouvoirs & Coopération Interservices</h3>
-                </div>
-                <div class="grid-2">
-                    <div class="card">
-                        <h4>Habilitations & Pouvoirs</h4>
-                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Les agents peuvent :</p>
-                        <ul>
-                            <li>Contrôler l'identité et les documents administratifs.</li>
-                            <li>Consulter les bases de données fédérales autorisées.</li>
-                            <li>Ouvrir, conduire des enquêtes et établir des rapports.</li>
-                            <li>Procéder à des interpellations et exécuter des mesures.</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h4>Coopération Interservices</h4>
-                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Partenaires réguliers :</p>
-                        <ul>
-                            <li><span>FIB</span> (Federal Investigation Bureau)</li>
-                            <li><span>SABP</span> (San Andreas Border Patrol)</li>
-                            <li><span>LSPD</span> (Los Santos Police Department)</li>
-                            <li><span>BCSO</span> (Blaine County Sheriff's Office)</li>
-                            <li><span>Autorités judiciaires fédérales</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. ORGANISATION -->
+            <!-- 6. ORGANISATION -->
             <div id="tab-organisation" class="tab-pane">
                 <div class="section-header">
-                    <h3>Organisation de la Division</h3>
+                    <h3>Organisation Interne (Bureaux)</h3>
                 </div>
                 <div class="grid-3">
                     <div class="card">
                         <h4>BCM</h4>
                         <p style="font-size:0.8rem; color:var(--text-main); font-weight:bold; margin-bottom:8px;">Bureau des Contrôles Migratoires</p>
                         <ul>
-                            <li>Contrôles d'identité.</li>
-                            <li>Vérifications administratives.</li>
-                            <li>Opérations de terrain.</li>
+                            <li>Contrôles d'identité et inopinés.</li>
+                            <li>Vérifications de statut migratoire.</li>
+                            <li>Surveillance et transmission d'infos.</li>
                         </ul>
                     </div>
                     <div class="card">
                         <h4>BEM</h4>
                         <p style="font-size:0.8rem; color:var(--text-main); font-weight:bold; margin-bottom:8px;">Bureau des Enquêtes Migratoires</p>
                         <ul>
-                            <li>Investigations ciblées.</li>
-                            <li>Collecte de renseignements.</li>
-                            <li>Constitution des dossiers.</li>
+                            <li>Investigations et collecte de renseignements.</li>
+                            <li>Analyse des dossiers et enquêtes entreprises.</li>
+                            <li>Préparation des opérations ciblées.</li>
                         </ul>
                     </div>
                     <div class="card">
                         <h4>BEF</h4>
                         <p style="font-size:0.8rem; color:var(--text-main); font-weight:bold; margin-bottom:8px;">Bureau des Expulsions Fédérales</p>
                         <ul>
-                            <li>Localisation des cibles.</li>
-                            <li>Exécution des mesures.</li>
-                            <li>Suivi des procédures.</li>
+                            <li>Localisation des individus.</li>
+                            <li>Exécution des mesures d'expulsion.</li>
+                            <li>Suivi administratif et clôture.</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- 6. PROFIL & OBJECTIFS -->
-            <div id="tab-profil" class="tab-pane">
+            <!-- 7. HIERARCHIE & DOSSIERS -->
+            <div id="tab-hierarchie" class="tab-pane">
                 <div class="section-header">
-                    <h3>Profil, Objectifs & Conclusion</h3>
+                    <h3>Hiérarchie, Renseignement & Dossiers</h3>
                 </div>
                 <div class="grid-2">
                     <div class="card">
-                        <h4>Qualités de l'Agent DIEE</h4>
+                        <h4>Chaîne Hiérarchique</h4>
                         <ul>
-                            <li>Professionnalisme et discrétion.</li>
-                            <li>Impartialité et sang-froid.</li>
-                            <li>Capacités d'observation et rigueur administrative.</li>
-                            <li>Respect strict de la chaîne de commandement.</li>
+                            <li><span>Direction de la DIEE :</span> Responsable de l'ensemble.</li>
+                            <li><span>Commandement :</span> Supervision et validation des opérations.</li>
+                            <li><span>Responsables de bureaux :</span> Gestion quotidienne (BCM, BEM, BEF).</li>
+                            <li><span>Agents spécialisés :</span> Exécution des missions sur le terrain.</li>
                         </ul>
                     </div>
                     <div class="card">
-                        <h4>Objectifs Stratégiques</h4>
-                        <p style="margin-bottom: 6px; font-size:0.82rem; color:var(--text-muted);">Court / Moyen / Long terme :</p>
+                        <h4>Gestion des Dossiers & Renseignement</h4>
+                        <p style="margin-bottom: 8px; font-size:0.82rem; color:var(--text-muted);">Suivi centralisé :</p>
                         <ul>
-                            <li>Accroître les contrôles administratifs et enquêtes.</li>
-                            <li>Réduire les infractions migratoires et optimiser les expulsions.</li>
-                            <li>Garantir une application uniforme de la loi fédérale.</li>
+                            <li>Enregistrement systématique (motif, rapports, mandats, historique).</li>
+                            <li>Centralisation du renseignement interne (contrôles, enquêtes, auditions).</li>
+                            <li>Vision globale des affaires et traçabilité rigoureuse.</li>
                         </ul>
                     </div>
                 </div>
-                <div class="card" style="margin-top: 5px;">
+            </div>
+
+            <!-- 8. OBJECTIFS & CONCLUSION -->
+            <div id="tab-objectifs" class="tab-pane">
+                <div class="section-header">
+                    <h3>Objectifs Stratégiques & Conclusion</h3>
+                </div>
+                <div class="card" style="margin-bottom: 5px;">
+                    <h4>Objectifs par Échéance</h4>
+                    <div class="grid-3" style="margin-top: 10px;">
+                        <p style="font-size: 0.85rem;"><b>Court terme :</b> Base de données migratoire, renforcement des contrôles, dossiers Cayo et stabilité interne.</p>
+                        <p style="font-size: 0.85rem;"><b>Moyen terme :</b> Capacités d'enquête accrues, volume de dossiers, suivi des expulsions et contrôles d'entreprises.</p>
+                        <p style="font-size: 0.85rem;"><b>Long terme :</b> Référence fédérale de l'immigration, contrôle des flux, réduction des fraudes et structure durable.</p>
+                    </div>
+                </div>
+                <div class="card">
                     <h4>Conclusion</h4>
+                    <p style="margin-bottom: 10px;">
+                        La Division de l'Immigration, des Enquêtes et des Expulsions (DIEE) est une division fédérale spécialisée disposant d'une organisation interne complète et d'une compétence dédiée aux problématiques migratoires.
+                    </p>
+                    <p style="font-weight: bold; color: var(--accent-yellow); margin-bottom: 8px;">
+                        IMMIGRATION → ENQUÊTES → EXPULSIONS
+                    </p>
                     <p>
-                        La Division de l'Immigration, des Enquêtes et des Expulsions (DIEE) constitue un pilier essentiel de l'application des lois fédérales relatives à l'immigration. Grâce à ses capacités de contrôle, d'enquête et d'exécution, elle assure l'identification des individus concernés, la conduite des investigations nécessaires et l'application des décisions prises par les autorités compétentes.
+                        Grâce à ses contrôles d'identité, ses enquêtes, ses opérations sur le terrain et l'exécution des mesures fédérales, la DIEE dispose d'un rôle central dans le contrôle migratoire et la sécurité du territoire.
                     </p>
                 </div>
             </div>
