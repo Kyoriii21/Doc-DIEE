@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>S.A.B.P. — DOSSIER OFFICIEL [VIDE]</title>
+    <title>S.A.B.P. — SUIVI DES FORMATIONS [SECURE TERMINAL]</title>
     <style>
         /* --- CONFIGURATION THÈME RP / NIER --- */
         :root {
@@ -95,10 +95,16 @@
             color: var(--accent-color);
         }
 
-        /* Grille interne pour organiser plusieurs encadrés côte à côte */
+        /* Grilles pour organiser les encadrés côte à côte */
         .grid-2cols {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-3cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
@@ -107,7 +113,7 @@
             border: 1px dashed var(--border-color);
             background: rgba(0, 0, 0, 0.2);
             padding: 20px;
-            min-height: 150px;
+            min-height: 120px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -142,43 +148,52 @@
     <div class="container">
         <!-- EN-TÊTE -->
         <header>
-            <h1>S.A.B.P. — FICHE DE DONNÉES <span style="font-size:0.75em; color:var(--accent-color);">[SECURE TERMINAL]</span></h1>
-            <div><span style="font-size: 0.9rem; color: var(--accent-color);">STATUT : EN COURS D'ÉDITION</span></div>
+            <h1>S.A.B.P. — DOSSIER FORMATIONS <span style="font-size:0.75em; color:var(--accent-color);">[MODULES OFFICIELS]</span></h1>
+            <div><span style="font-size: 0.9rem; color: var(--accent-color);">STATUT : PRÊT POUR SAISIE</span></div>
         </header>
 
-        <!-- ZONE CENTRALE AVEC ENCADRÉS VIDES -->
+        <!-- ZONE CENTRALE AVEC ENCADRÉS FORMATIONS -->
         <main class="content-area">
 
-            <!-- Premier grand encadré principal -->
+            <!-- SECTION FORMATIONS 1 À 3 -->
             <div class="panel">
-                <h2>Section Principale // Informations Générales</h2>
-                <div class="sub-box">
-                    [ Zone de texte libre 1 : Insérez vos informations ici ]
-                </div>
-            </div>
-
-            <!-- Grille avec deux encadrés côte à côte -->
-            <div class="grid-2cols">
-                <div class="panel">
-                    <h2>Rapport A</h2>
+                <h2>Modules de Formation Initiale (1 à 3)</h2>
+                <div class="grid-3cols">
                     <div class="sub-box">
-                        [ Zone de texte libre 2 : Détails, notes ou statistiques ]
+                        [ Formation 1 : Théorie & Base ]
                     </div>
-                </div>
-
-                <div class="panel">
-                    <h2>Rapport B</h2>
                     <div class="sub-box">
-                        [ Zone de texte libre 3 : Observations ou objectifs ]
+                        [ Formation 2 : Procédures Contrôle ]
+                    </div>
+                    <div class="sub-box">
+                        [ Formation 3 : Tactique Terrain ]
                     </div>
                 </div>
             </div>
 
-            <!-- Dernier grand encadré -->
+            <!-- SECTION FORMATIONS 4 & 5 -->
             <div class="panel">
-                <h2>Section Annexes // Observations</h2>
-                <div class="sub-box">
-                    [ Zone de texte libre 4 : Remarques finales, signatures ou status ]
+                <h2>Modules de Formation Avancée (4 & 5)</h2>
+                <div class="grid-2cols">
+                    <div class="sub-box">
+                        [ Formation 4 : Gestion de Crise ]
+                    </div>
+                    <div class="sub-box">
+                        [ Formation 5 : Opérations Spéciales ]
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION FORMATIONS GLOBALES : CONDUITE & RADIO -->
+            <div class="panel">
+                <h2>Formations Globales & Compétences Opérationnelles</h2>
+                <div class="grid-2cols">
+                    <div class="sub-box">
+                        [ Formation Globale : Conduite Tactique & Intervention ]
+                    </div>
+                    <div class="sub-box">
+                        [ Formation Globale : Protocoles Radio & Communications ]
+                    </div>
                 </div>
             </div>
 
@@ -186,8 +201,8 @@
 
         <!-- PIED DE PAGE -->
         <footer>
-            <div><span class="status-pulse"></span> SYSTEM STATUS: ONLINE // TERMINAL PRÊT</div>
-            <div><span class="key">MODE</span> ÉDITION LIBRE</div>
+            <div><span class="status-pulse"></span> SYSTEM STATUS: ONLINE // TERMINAL FORMATION</div>
+            <div><span class="key">MODE</span> SAISIE ENCADRÉS</div>
         </footer>
     </div>
 
