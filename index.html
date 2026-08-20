@@ -2,22 +2,23 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>S.A.B.P. — SUIVI DES FORMATIONS [SECURE TERMINAL]</title>
+    <title>S.A.B.P. — REGISTRE DES FAC & FORMATIONS</title>
     <style>
-        /* --- CONFIGURATION THÈME RP / NIER --- */
+        /* --- CONFIGURATION THÈME : BUREAU FÉDÉRAL / ACIER PROPRE --- */
         :root {
-            --bg-color: #111a14;       /* Vert sombre profond */
-            --grid-color: #18261d;     /* Grille subtile */
-            --text-color: #e2c858;     /* Jaune doré mat */
-            --accent-color: #d19f36;   /* Jaune orangé doux pour les accents */
-            --panel-bg: rgba(17, 26, 20, 0.90);
-            --border-color: #a48f3b;   /* Bordures en jaune vieilli/doré */
+            --bg-color: #0d131a;       /* Bleu nuit très sombre */
+            --grid-color: #16222f;     /* Grille technique subtile */
+            --text-color: #c0d2ec;     /* Bleu acier clair, reposant et lisible */
+            --accent-color: #5b9bd5;   /* Bleu électrique doux pour les accents */
+            --panel-bg: rgba(13, 19, 26, 0.92);
+            --border-color: #32527b;   /* Bordures acier bleuté */
+            --box-bg: rgba(18, 28, 40, 0.6);
         }
 
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
             background-color: var(--bg-color);
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text-color);
             overflow: hidden;
             user-select: none;
@@ -27,33 +28,29 @@
         .background-grid {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px; z-index: -1;
-        }
-        .scanlines {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.15));
-            background-size: 100% 4px; pointer-events: none; z-index: 1000; opacity: 0.5;
+            background-size: 30px 30px; z-index: -1;
         }
 
         /* --- LAYOUT GLOBAL --- */
         .container {
             display: flex; flex-direction: column;
-            height: 100vh; padding: 15px 40px;
-            box-sizing: border-box; width: 98%; margin: 0 auto;
+            height: 100vh; padding: 20px 40px;
+            box-sizing: border-box; width: 100%; max-width: 1400px; margin: 0 auto;
         }
 
         header {
             border-bottom: 2px solid var(--border-color);
-            padding: 12px 25px; margin-bottom: 15px;
+            padding: 15px 25px; margin-bottom: 20px;
             display: flex; justify-content: space-between; align-items: center;
             flex-shrink: 0;
             background: var(--panel-bg);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            border-radius: 4px;
         }
 
         h1 { 
-            margin: 0; font-size: 1.4rem; letter-spacing: 2px; text-transform: uppercase; 
-            font-weight: normal;
+            margin: 0; font-size: 1.3rem; letter-spacing: 1.5px; text-transform: uppercase; 
+            font-weight: 600; color: #ffffff;
         }
 
         /* --- CONTENU --- */
@@ -75,52 +72,53 @@
             border: 1px solid var(--border-color);
             background: var(--panel-bg);
             padding: 25px 30px;
-            box-shadow: 6px 6px 0px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
             position: relative;
-        }
-        
-        .panel::after {
-            content: "";
-            position: absolute;
-            top: -2px; right: -2px;
-            width: 8px; height: 8px;
-            background: var(--text-color);
+            border-radius: 4px;
         }
 
         h2 { 
-            font-size: 1.3rem; margin: 0 0 15px 0; text-transform: uppercase; 
-            letter-spacing: 2px; border-bottom: 1px solid var(--border-color);
+            font-size: 1.15rem; margin: 0 0 15px 0; text-transform: uppercase; 
+            letter-spacing: 1px; border-bottom: 1px solid var(--border-color);
             padding-bottom: 8px; display: inline-block;
-            font-weight: bold;
+            font-weight: 600;
             color: var(--accent-color);
         }
 
         /* Grilles pour organiser les encadrés côte à côte */
         .grid-2cols {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
         }
 
         .grid-3cols {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
-        /* Encadré secondaire (vide) */
+        /* Encadré secondaire vide et propre */
         .sub-box {
             border: 1px dashed var(--border-color);
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            min-height: 120px;
+            background: var(--box-bg);
+            padding: 25px 20px;
+            min-height: 110px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: rgba(226, 200, 88, 0.5);
+            color: rgba(192, 210, 236, 0.4);
             font-style: italic;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .sub-box:hover {
+            border-color: var(--accent-color);
+            color: rgba(192, 210, 236, 0.8);
+            background: rgba(18, 28, 40, 0.85);
         }
 
         /* FOOTER */
@@ -129,70 +127,70 @@
             display: flex; justify-content: space-between; align-items: center;
             font-size: 0.85rem; flex-shrink: 0;
             background: var(--panel-bg);
-            padding: 10px 20px;
-            opacity: 0.9;
+            padding: 12px 20px;
+            opacity: 0.95;
             margin-top: 15px;
+            border-radius: 4px;
         }
-        .key { background: var(--text-color); color: var(--bg-color); padding: 2px 6px; margin-right: 5px; font-weight: bold; }
+        .key { background: var(--accent-color); color: var(--bg-color); padding: 2px 6px; margin-right: 5px; font-weight: bold; border-radius: 2px; }
         .status-pulse {
-            display: inline-block; width: 8px; height: 8px; background-color: #5ea86c;
-            border-radius: 50%; margin-right: 8px;
+            display: inline-block; width: 8px; height: 8px; background-color: #4cd137;
+            border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px #4cd137;
         }
     </style>
 </head>
 <body>
 
-    <div class="scanlines"></div>
     <div class="background-grid"></div>
 
     <div class="container">
         <!-- EN-TÊTE -->
         <header>
-            <h1>S.A.B.P. — DOSSIER FORMATIONS <span style="font-size:0.75em; color:var(--accent-color);">[MODULES OFFICIELS]</span></h1>
-            <div><span style="font-size: 0.9rem; color: var(--accent-color);">STATUT : PRÊT POUR SAISIE</span></div>
+            <h1>S.A.B.P. — REGISTRE DES FORMATIONS <span style="font-size:0.75em; color:var(--accent-color);">[SECURE DATABASE]</span></h1>
+            <div><span style="font-size: 0.85rem; color: var(--accent-color); font-weight: 600;">STATUT : EN ATTENTE DE SAISIE</span></div>
         </header>
 
-        <!-- ZONE CENTRALE AVEC ENCADRÉS FORMATIONS -->
+        <!-- ZONE CENTRALE AVEC LES ENCADRÉS FAC 1 À 5 ET FORMATIONS GLOBALES -->
         <main class="content-area">
 
-            <!-- SECTION FORMATIONS 1 À 3 -->
+            <!-- SECTION FAC 1 À 3 -->
             <div class="panel">
-                <h2>Modules de Formation Initiale (1 à 3)</h2>
+                <h2>Formations d'Armement & Contrôle (FAC 1 à 3)</h2>
                 <div class="grid-3cols">
                     <div class="sub-box">
-                        [ Formation 1 : Théorie & Base ]
+                        [ FAC 1 : Module Vide ]
                     </div>
                     <div class="sub-box">
-                        [ Formation 2 : Procédures Contrôle ]
+                        [ FAC 2 : Module Vide ]
                     </div>
                     <div class="sub-box">
-                        [ Formation 3 : Tactique Terrain ]
+                        [ FAC 3 : Module Vide ]
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION FORMATIONS 4 & 5 -->
+            <!-- SECTION FAC 4 & 5 -->
             <div class="panel">
-                <h2>Modules de Formation Avancée (4 & 5)</h2>
+                <h2>Formations d'Armement & Contrôle Avancées (FAC 4 & 5)</h2>
                 <div class="grid-2cols">
                     <div class="sub-box">
-                        [ Formation 4 : Gestion de Crise ]
+                        [ FAC 4 : Module Vide ]
                     </div>
                     <div class="sub-box">
-                        [ Formation 5 : Opérations Spéciales ]
+                        [ FAC 5 : Module Vide ]
                     </div>
                 </div>
             </div>
 
             <!-- SECTION FORMATIONS GLOBALES : CONDUITE & RADIO -->
             <div class="panel">
-                <h2>Formations Globales & Compétences Opérationnelles</h2>
+                <h2>Formations Globales & Opérationnelles</h2>
                 <div class="grid-2cols">
                     <div class="sub-box">
-                        [ Formation Globale : Conduite Tactique & Intervention ]
+                        [ Formation Globale : Conduite ]
                     </div>
                     <div class="sub-box">
-                        [ Formation Globale : Protocoles Radio & Communications ]
+                        [ Formation Globale : Radio ]
                     </div>
                 </div>
             </div>
@@ -201,8 +199,8 @@
 
         <!-- PIED DE PAGE -->
         <footer>
-            <div><span class="status-pulse"></span> SYSTEM STATUS: ONLINE // TERMINAL FORMATION</div>
-            <div><span class="key">MODE</span> SAISIE ENCADRÉS</div>
+            <div><span class="status-pulse"></span> SYSTEM STATUS: ONLINE // SECURE PROTOCOL V2.4</div>
+            <div><span class="key">MODE</span> SAISIE LIBRE</div>
         </footer>
     </div>
 
