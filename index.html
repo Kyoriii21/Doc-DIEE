@@ -312,6 +312,12 @@
                 <button class="nav-btn" onclick="switchTab('tab-mandats', this)">
                     <span>■</span> Mandats & Expulsions
                 </button>
+                <button class="nav-btn" onclick="switchTab('tab-diplomates', this)">
+                    <span>■</span> Ressortissants Diplomatiques
+                </button>
+                <button class="nav-btn" onclick="switchTab('tab-moyens', this)">
+                    <span>■</span> Moyens & Dispositifs
+                </button>
                 <button class="nav-btn" onclick="switchTab('tab-hierarchie', this)">
                     <span>■</span> Hiérarchie & Dossiers
                 </button>
@@ -459,7 +465,64 @@
                 </div>
             </div>
 
-            <!-- 6. HIERARCHIE & DOSSIERS -->
+            <!-- 6. DIPLOMATES -->
+            <div id="tab-diplomates" class="tab-pane">
+                <div class="section-header">
+                    <h3>Accueil des Ressortissants Diplomatiques</h3>
+                </div>
+                <div class="card">
+                    <h4>Prise en Charge Spécifique</h4>
+                    <p style="margin-bottom: 10px;">La DIEE peut également être chargée de l'accueil et de la prise en charge des ressortissants diplomatiques lors de leur arrivée sur le territoire. Cette mission comprend notamment :</p>
+                    <ul>
+                        <li><span>Accueil officiel</span> des ressortissants diplomatiques.</li>
+                        <li><span>Vérification</span> de leurs documents et de leur identité.</li>
+                        <li><span>Accompagnement</span> lors de leur arrivée sur le territoire.</li>
+                        <li><span>Sécurisation</span> de leurs déplacements lorsque cela est nécessaire.</li>
+                        <li><span>Gestion</span> des procédures administratives liées à leur entrée sur le territoire.</li>
+                    </ul>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
+                        Les ressortissants bénéficiant d'un statut diplomatique font l'objet d'un traitement spécifique conformément à leur statut et aux directives fédérales applicables.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 7. MOYENS ET DISPOSITIFS -->
+            <div id="tab-moyens" class="tab-pane">
+                <div class="section-header">
+                    <h3>Moyens et Dispositifs d'Intervention</h3>
+                </div>
+                <div class="grid-3">
+                    <div class="card">
+                        <h4>Véhicules banalisés</h4>
+                        <p style="font-size:0.85rem; margin-bottom:8px;">Pour préserver l'efficacité et la discrétion :</p>
+                        <ul>
+                            <li>Enquêtes discrètes et surveillance.</li>
+                            <li>Localisation d'individus.</li>
+                            <li>Contrôles inopinés ciblés.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Tenue civile</h4>
+                        <p style="font-size:0.85rem; margin-bottom:8px;">Privilégiée pour éviter de révéler l'appartenance :</p>
+                        <ul>
+                            <li>Enquêtes et surveillances.</li>
+                            <li>Contrôles discrets.</li>
+                            <li>Opérations en entreprise.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Tenue opérationnelle</h4>
+                        <p style="font-size:0.85rem; margin-bottom:8px;">Pour les interventions à risque particulier :</p>
+                        <ul>
+                            <li>Tenue renforcée.</li>
+                            <li>Port de gilet pare-balles / protection balistique.</li>
+                            <li>Sécurisation accrue des agents.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. HIERARCHIE & DOSSIERS -->
             <div id="tab-hierarchie" class="tab-pane">
                 <div class="section-header">
                     <h3>Hiérarchie, Renseignement & Dossiers</h3>
@@ -468,10 +531,10 @@
                     <div class="card">
                         <h4>Chaîne Hiérarchique</h4>
                         <ul>
-                            <li><span>Direction de la DIEE :</span> Responsable de l'ensemble.</li>
-                            <li><span>Commandement :</span> Supervision et validation des opérations.</li>
-                            <li><span>Responsables de bureaux :</span> Gestion quotidienne.</li>
-                            <li><span>Agents spécialisés :</span> Exécution des missions sur le terrain.</li>
+                            <li><span>Direction de la DIEE :</span> Responsable de l'ensemble de la division.</li>
+                            <li><span>Commandement :</span> Supervision des bureaux et validation des opérations.</li>
+                            <li><span>Responsables de bureaux :</span> Gestion quotidienne des unités.</li>
+                            <li><span>Agents spécialisés :</span> Réalisation des missions sur le terrain.</li>
                         </ul>
                     </div>
                     <div class="card">
@@ -486,7 +549,7 @@
                 </div>
             </div>
 
-            <!-- 7. OBJECTIFS & CONCLUSION -->
+            <!-- 9. OBJECTIFS & CONCLUSION -->
             <div id="tab-objectifs" class="tab-pane">
                 <div class="section-header">
                     <h3>Objectifs Stratégiques & Conclusion</h3>
@@ -495,7 +558,7 @@
                     <h4>Objectifs par Échéance</h4>
                     <div class="grid-3" style="margin-top: 10px;">
                         <p style="font-size: 0.85rem;"><b>Court terme :</b> Base de données migratoire, renforcement des contrôles, dossiers Cayo et stabilité interne.</p>
-                        <p style="font-size: 0.85rem;"><b>Moyen terme :</b> Capacités d'enquête accrues, volume de dossiers, suivi des expulsions et contrôles d'entreprises.</p>
+                        <p style="font-size: 0.85rem;"><b>Moyen terme :</b> Capacités d'enquête accrues, volume de dossiers, suivi des expulsions, contrôles d'entreprises et développement des interventions.</p>
                         <p style="font-size: 0.85rem;"><b>Long terme :</b> Référence fédérale de l'immigration, contrôle des flux, réduction des fraudes et structure durable.</p>
                     </div>
                 </div>
@@ -508,7 +571,7 @@
                         IMMIGRATION → ENQUÊTES → EXPULSIONS
                     </p>
                     <p>
-                        Grâce à ses contrôles d'identité, ses enquêtes, ses opérations sur le terrain et l'exécution des mesures fédérales, la DIEE dispose d'un rôle central dans le contrôle migratoire et la sécurité du territoire.
+                        Grâce à ses contrôles d'identité, ses enquêtes, ses contrôles inopinés, ses interventions, l'accueil des ressortissants diplomatiques et l'exécution des mesures fédérales, la DIEE dispose d'un rôle central dans le contrôle migratoire et la sécurité du territoire.
                     </p>
                 </div>
             </div>
