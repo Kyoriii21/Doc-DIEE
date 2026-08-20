@@ -2,126 +2,301 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>S.A.B.P. // TERMINAL DE GESTION</title>
+    <title>S.A.B.P. // DIVISION DE L'IMMIGRATION ET DES ENQUÊTES (DIE)</title>
     <style>
         :root {
-            --bg-deep: #0f0a12;      /* Fond très sombre */
-            --bg-panel: #1a1622;     /* Panneaux gris-violet */
-            --accent-blue: #6366f1;  /* Accent néon violet/bleu */
-            --text-main: #e2e8f0;    /* Blanc cassé */
-            --text-muted: #94a3b8;   /* Gris texte */
-            --border: #332d3d;       /* Bordure fine */
+            --bg-deep: #0f0a12;
+            --bg-panel: #1a1622;
+            --accent-blue: #6366f1;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #332d3d;
         }
-
-        body {
-            margin: 0; padding: 0;
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            display: flex; height: 100vh; overflow: hidden;
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--bg-deep); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            display: flex; 
+            height: 100vh; 
+            overflow: hidden; 
         }
-
-        /* --- SIDEBAR --- */
-        .sidebar {
-            width: 240px; background: #15111a;
-            border-right: 1px solid var(--border);
-            display: flex; flex-direction: column; padding: 20px;
+        .sidebar { 
+            width: 260px; 
+            background: #15111a; 
+            border-right: 1px solid var(--border); 
+            display: flex; 
+            flex-direction: column; 
+            padding: 20px; 
+            box-sizing: border-box;
+            overflow-y: auto;
         }
-
-        .nav-item {
-            padding: 12px; margin-bottom: 5px; cursor: pointer;
-            border-radius: 8px; color: var(--text-muted);
-            font-size: 0.9rem; transition: 0.2s;
+        .nav-item { 
+            padding: 10px 12px; 
+            margin-bottom: 4px; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+            transition: 0.2s; 
+            text-decoration: none;
         }
-        .nav-item:hover, .nav-item.active {
-            background: rgba(99, 102, 241, 0.1); color: var(--accent-blue);
+        .nav-item:hover, .nav-item.active { 
+            background: rgba(99, 102, 241, 0.1); 
+            color: var(--accent-blue); 
         }
-
-        /* --- MAIN AREA --- */
-        .main { flex: 1; display: flex; flex-direction: column; padding: 30px; gap: 20px; }
-
-        /* HEADER */
-        .header-dash {
-            background: var(--bg-panel); border: 1px solid var(--border);
-            border-radius: 12px; padding: 25px; display: flex; justify-content: space-between;
+        .nav-section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin: 15px 0 5px 5px;
+            opacity: 0.6;
         }
-
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 10px; }
-        .stat-card {
-            background: #231f2b; padding: 15px; border-radius: 8px;
-            border-left: 3px solid var(--accent-blue);
+        .main { 
+            flex: 1; 
+            padding: 30px; 
+            overflow-y: auto; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-
-        /* FILTRES & TABLEAU */
-        .control-panel {
-            background: var(--bg-panel); border: 1px solid var(--border);
-            border-radius: 12px; padding: 20px;
+        .panel { 
+            background: var(--bg-panel); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 25px; 
         }
-        .filter-row { display: flex; gap: 10px; margin-bottom: 20px; }
-        .filter-input {
-            background: #15111a; border: 1px solid var(--border);
-            padding: 10px; border-radius: 6px; color: white; flex: 1;
+        .header-section { 
+            margin-bottom: 20px; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 15px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
-
-        /* AGENT CARD */
-        .agent-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-        .agent-card {
-            background: #231f2b; padding: 15px; border-radius: 10px;
-            display: flex; align-items: center; gap: 15px; border: 1px solid var(--border);
+        h1 { margin: 0; color: var(--accent-blue); text-transform: uppercase; font-size: 1.4rem; letter-spacing: 1px; }
+        h2 { color: var(--accent-blue); font-size: 1.1rem; text-transform: uppercase; margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .card { background: #231f2b; padding: 20px; border-radius: 10px; border-left: 4px solid var(--accent-blue); }
+        ul { color: var(--text-muted); padding-left: 18px; margin: 8px 0; font-size: 0.9rem; }
+        li { margin-bottom: 6px; line-height: 1.4; }
+        p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-top: 5px; }
+        .motto {
+            font-style: italic;
+            color: var(--accent-blue);
+            font-weight: bold;
+            font-size: 1rem;
+            background: rgba(99, 102, 241, 0.08);
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px dashed var(--accent-blue);
         }
-        .avatar { width: 40px; height: 40px; background: #332d3d; border-radius: 50%; }
-
+        .badge {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION LATÉRALE -->
     <div class="sidebar">
-        <h2 style="font-size: 1.2rem; margin-bottom: 30px;">S.A.B.P.</h2>
-        <div class="nav-item active">Centre de Dispatch</div>
-        <div class="nav-item">Requêtes & Rapports</div>
-        <div class="nav-item">Documentation</div>
-        <div class="nav-item">Gestion Unités</div>
+        <h2 style="font-size: 1.1rem; margin-bottom: 20px; color: white; border:none;">S.A.B.P. // DIE</h2>
+        
+        <div class="nav-section-title">Général</div>
+        <a href="#presentation" class="nav-item active">Présentation Générale</a>
+        <a href="#missions" class="nav-item">Missions Principales</a>
+        
+        <div class="nav-section-title">Organisation</div>
+        <a href="#bureaux" class="nav-item">Organisation Interne</a>
+        
+        <div class="nav-section-title">Opérationnel</div>
+        <a href="#procedures" class="nav-item">Procédures & Coopération</a>
+        <a href="#strategie" class="nav-item">Objectifs Stratégiques</a>
     </div>
 
-    <!-- DASHBOARD -->
+    <!-- CONTENU PRINCIPAL -->
     <main class="main">
-        <div class="header-dash">
-            <div>
-                <h1 style="margin:0;">CENTRE DE DISPATCH</h1>
-                <p style="color:var(--text-muted); font-size: 0.9rem;">Pilotage opérationnel en temps réel.</p>
+
+        <!-- PRÉSENTATION -->
+        <div id="presentation" class="panel">
+            <div class="header-section">
+                <div>
+                    <h1>Division de l'Immigration et des Enquêtes (DIE)</h1>
+                    <p>Documentation officielle et directives opérationnelles de l'unité spécialisée.</p>
+                </div>
+                <div class="badge">Unité Spécialisée</div>
             </div>
-            <div class="stats-grid">
-                <div class="stat-card"><div>UNITES</div><div style="font-size:1.4rem;">7</div></div>
-                <div class="stat-card"><div>ACTIVES</div><div style="font-size:1.4rem;">5</div></div>
-                <div class="stat-card"><div>AFFECTÉS</div><div style="font-size:1.4rem;">8</div></div>
-                <div class="stat-card"><div>ATTENTE</div><div style="font-size:1.4rem;">1</div></div>
+            <p>
+                La Division de l'Immigration et des Enquêtes (DIE) est une unité spécialisée chargée de l'application des lois relatives à l'immigration, à la sécurité des frontières et à la lutte contre les réseaux criminels transnationaux.
+            </p>
+            <p>
+                La division agit sur l'ensemble du territoire et dispose de compétences étendues en matière d'enquête, de renseignement, de contrôle administratif et d'exécution de mandats. Son rôle est de prévenir, détecter et démanteler les activités illégales pouvant porter atteinte à la sécurité du territoire.
+            </p>
+            <div style="margin-top: 20px;">
+                <div class="motto">"Contrôler, Enquêter, Protéger."</div>
             </div>
         </div>
 
-        <div class="control-panel">
-            <div class="filter-row">
-                <input type="text" class="filter-input" placeholder="Rechercher une unité...">
-                <button style="background:var(--accent-blue); border:none; padding:10px 20px; border-radius:6px; color:white;">FILTRER</button>
-            </div>
-            
-            <div class="agent-list">
-                <div class="agent-card">
-                    <div class="avatar"></div>
-                    <div>
-                        <div style="font-weight:bold;">T. Santos</div>
-                        <div style="font-size:0.8rem; color:var(--text-muted);">En attente de dispatch</div>
-                    </div>
+        <!-- MISSIONS PRINCIPALES -->
+        <div id="missions" class="panel">
+            <h2>Missions Principales</h2>
+            <div class="grid-2" style="margin-top: 15px;">
+                <div class="card">
+                    <h3>Contrôle de l'Immigration</h3>
+                    <ul>
+                        <li>Vérifier la situation administrative des ressortissants étrangers.</li>
+                        <li>Effectuer des contrôles d'identité dans le respect des procédures en vigueur.</li>
+                        <li>Contrôler les points d'entrée et de sortie du territoire.</li>
+                        <li>Identifier les individus faisant l'objet d'une surveillance particulière.</li>
+                        <li>Participer aux opérations de sécurisation des frontières.</li>
+                    </ul>
                 </div>
-                <div class="agent-card">
-                    <div class="avatar"></div>
-                    <div>
-                        <div style="font-weight:bold;">O. Taylor</div>
-                        <div style="font-size:0.8rem; color:var(--text-muted);">En patrouille active</div>
-                    </div>
+                <div class="card">
+                    <h3>Enquêtes Administratives & Criminelles</h3>
+                    <ul>
+                        <li>Ouvrir des enquêtes liées à l'immigration.</li>
+                        <li>Réunir et exploiter du renseignement.</li>
+                        <li>Identifier des réseaux organisés.</li>
+                        <li>Rechercher des individus recherchés ou sous mandat.</li>
+                        <li>Coopérer avec les autres services d'investigation.</li>
+                    </ul>
+                </div>
+                <div class="card" style="margin-top: 15px;">
+                    <h3>Lutte contre les Réseaux Transnationaux</h3>
+                    <ul>
+                        <li>Identifier les organisations criminelles opérant sur le territoire.</li>
+                        <li>Détecter les filières d'immigration clandestine.</li>
+                        <li>Démanteler les réseaux de faux documents.</li>
+                        <li>Lutter contre les trafics exploitant les flux migratoires.</li>
+                        <li>Neutraliser les structures criminelles liées à l'étranger.</li>
+                    </ul>
+                </div>
+                <div class="card" style="margin-top: 15px;">
+                    <h3>Contrôles d'Entreprises & Mandats</h3>
+                    <ul>
+                        <li>Inspections administratives et vérifications du personnel.</li>
+                        <li>Contrôles de conformité et sociétés suspectées.</li>
+                        <li>Exécution de perquisitions, arrestations et saisies de preuves.</li>
+                        <li>Sécurisation des opérations à risque visant des entreprises ou dirigeants.</li>
+                    </ul>
                 </div>
             </div>
         </div>
+
+        <!-- ORGANISATION INTERNE -->
+        <div id="bureaux" class="panel">
+            <h2>Organisation Interne</h2>
+            <div class="grid-4" style="margin-top: 15px;">
+                <div class="card">
+                    <h3>BCI</h3>
+                    <p style="font-size:0.8rem; color:var(--text-main); font-weight:bold; margin-bottom:5px;">Bureau des Contrôles et de l'Immigration</p>
+                    <ul>
+                        <li>Contrôles d'identité.</li>
+                        <li>Vérifications administratives.</li>
+                        <li>Contrôles frontaliers.</li>
+                        <li>Contrôles de circulation.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>BER</h3>
+                    <p style="font-size:0.8rem; color:var(--text-main); font-weight:bold; margin-bottom:5px;">Bureau des Enquêtes et du Renseignement</p>
+                    <ul>
+                        <li>Enquêtes judiciaires.</li>
+                        <li>Collecte de renseignement.</li>
+                        <li>Analyse criminelle.</li>
+                        <li>Surveillance d'individus ou groupes.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>BRT</h3>
+                    <p style="font-size:0.8rem; color:var(--text-main); font-weight:bold; margin-bottom:5px;">Bureau des Réseaux Transnationaux</p>
+                    <ul>
+                        <li>Organisations criminelles.</li>
+                        <li>Réseaux étrangers.</li>
+                        <li>Trafics internationaux.</li>
+                        <li>Coopération interservices.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>BOM</h3>
+                    <p style="font-size:0.8rem; color:var(--text-main); font-weight:bold; margin-bottom:5px;">Bureau des Opérations et Mandats</p>
+                    <ul>
+                        <li>Arrestations.</li>
+                        <li>Perquisitions.</li>
+                        <li>Interventions ciblées.</li>
+                        <li>Appui tactique.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROCÉDURES & COOPÉRATION -->
+        <div id="procedures" class="panel">
+            <h2>Procédures de Contrôle & Coopération</h2>
+            <div class="grid-2" style="margin-top: 15px;">
+                <div class="card">
+                    <h3>Étapes de Contrôle</h3>
+                    <ul>
+                        <li>S'identifier auprès de l'individu.</li>
+                        <li>Informer du motif du contrôle lorsque la situation le permet.</li>
+                        <li>Vérifier l'identité et procéder aux vérifications nécessaires.</li>
+                        <li>Rédiger un rapport officiel lorsque requis.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Partenaires & Interservices</h3>
+                    <p>La DIE travaille régulièrement en étroite collaboration avec :</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
+                        <span class="badge">SABP</span>
+                        <span class="badge">LSPD</span>
+                        <span class="badge">BCSO</span>
+                        <span class="badge">FIB</span>
+                        <span class="badge">Autorités Judiciaires</span>
+                    </div>
+                    <p style="margin-top: 12px; font-size: 0.85rem;">Cette coordination permet une circulation fluide du renseignement face aux menaces.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OBJECTIFS STRATÉGIQUES -->
+        <div id="strategie" class="panel">
+            <h2>Objectifs Stratégiques & Conclusion</h2>
+            <div class="grid-2" style="margin-top: 15px;">
+                <div class="card">
+                    <h3>Court Terme</h3>
+                    <ul>
+                        <li>Renforcer la présence sur le territoire.</li>
+                        <li>Développer le renseignement opérationnel.</li>
+                        <li>Identifier les individus à risque.</li>
+                        <li>Augmenter les contrôles ciblés.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Long Terme</h3>
+                    <ul>
+                        <li>Réduire les activités criminelles transnationales.</li>
+                        <li>Améliorer la sécurité des frontières.</li>
+                        <li>Démanteler durablement les réseaux criminels.</li>
+                        <li>Assurer une surveillance efficace des menaces émergentes.</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
+                <b>Conclusion :</b> La Division de l'Immigration et des Enquêtes constitue une composante essentielle de la sécurité du territoire. Grâce à ses capacités de contrôle, d'enquête et d'intervention, elle permet d'assurer le respect des lois relatives à l'immigration tout en luttant activement contre les organisations criminelles susceptibles de menacer l'ordre public.
+            </p>
+        </div>
+
     </main>
 
 </body>
