@@ -2,398 +2,127 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>S.A.B.P. — REGISTRE OPÉRATIONNEL & FORMATIONS</title>
+    <title>S.A.B.P. // TERMINAL DE GESTION</title>
     <style>
         :root {
-            --bg-color: #0b110e;
-            --panel-bg: rgba(14, 22, 17, 0.85);
-            --panel-hover: rgba(20, 32, 24, 0.95);
-            --text-main: #d4bc78;
-            --text-muted: #8b9e8b;
-            --accent: #f3d454;
-            --accent-glow: rgba(243, 212, 84, 0.2);
-            --border: #4a5c48;
-            --border-glow: #8ba386;
+            --bg-deep: #0f0a12;      /* Fond très sombre */
+            --bg-panel: #1a1622;     /* Panneaux gris-violet */
+            --accent-blue: #6366f1;  /* Accent néon violet/bleu */
+            --text-main: #e2e8f0;    /* Blanc cassé */
+            --text-muted: #94a3b8;   /* Gris texte */
+            --border: #332d3d;       /* Bordure fine */
         }
 
-        * {
-            box-sizing: border-box;
+        body {
             margin: 0; padding: 0;
-            user-select: none;
-        }
-
-        body, html {
-            width: 100%; height: 100vh;
-            background-color: var(--bg-color);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-deep);
             color: var(--text-main);
-            overflow: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex; height: 100vh; overflow: hidden;
         }
 
-        /* --- BACKGROUND IMMERSIF --- */
-        .ambient-glow {
-            position: absolute;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(74, 92, 72, 0.15) 0%, transparent 70%);
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 0; pointer-events: none;
-            animation: pulseGlow 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
-            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-        }
-
-        .scanline-grid {
-            position: fixed; inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: 1; pointer-events: none;
-        }
-
-        /* --- LAYOUT PRINCIPAL --- */
-        .app-container {
-            position: relative; z-index: 2;
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            height: 100vh;
-            padding: 20px;
-            gap: 20px;
-        }
-
-        /* --- SIDEBAR DE NAVIGATION --- */
+        /* --- SIDEBAR --- */
         .sidebar {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 240px; background: #15111a;
+            border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; padding: 20px;
         }
 
-        .brand-box h2 {
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 5px;
+        .nav-item {
+            padding: 12px; margin-bottom: 5px; cursor: pointer;
+            border-radius: 8px; color: var(--text-muted);
+            font-size: 0.9rem; transition: 0.2s;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(99, 102, 241, 0.1); color: var(--accent-blue);
         }
 
-        .brand-box p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* --- MAIN AREA --- */
+        .main { flex: 1; display: flex; flex-direction: column; padding: 30px; gap: 20px; }
+
+        /* HEADER */
+        .header-dash {
+            background: var(--bg-panel); border: 1px solid var(--border);
+            border-radius: 12px; padding: 25px; display: flex; justify-content: space-between;
         }
 
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 30px 0;
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 10px; }
+        .stat-card {
+            background: #231f2b; padding: 15px; border-radius: 8px;
+            border-left: 3px solid var(--accent-blue);
         }
 
-        .nav-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            padding: 12px 15px;
-            text-align: left;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* FILTRES & TABLEAU */
+        .control-panel {
+            background: var(--bg-panel); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px;
+        }
+        .filter-row { display: flex; gap: 10px; margin-bottom: 20px; }
+        .filter-input {
+            background: #15111a; border: 1px solid var(--border);
+            padding: 10px; border-radius: 6px; color: white; flex: 1;
         }
 
-        .nav-btn:hover {
-            color: var(--text-main);
-            background: rgba(255,255,255,0.03);
-            border-color: rgba(255,255,255,0.05);
+        /* AGENT CARD */
+        .agent-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .agent-card {
+            background: #231f2b; padding: 15px; border-radius: 10px;
+            display: flex; align-items: center; gap: 15px; border: 1px solid var(--border);
         }
+        .avatar { width: 40px; height: 40px; background: #332d3d; border-radius: 50%; }
 
-        .nav-btn.active {
-            background: var(--accent-glow);
-            border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .system-status {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .pulse-dot {
-            width: 8px; height: 8px;
-            background: #4cd137;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #4cd137;
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-        /* --- CONTENU CENTRAL FLUIDE --- */
-        .main-content {
-            background: var(--panel-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            overflow-y: auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .main-content::-webkit-scrollbar { width: 6px; }
-        .main-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-        .tab-pane {
-            display: none;
-            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .tab-pane.active {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-header {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 12px;
-            margin-bottom: 5px;
-        }
-
-        .section-header h3 {
-            font-size: 1.25rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent);
-        }
-
-        /* --- GRILLES DE FORMATION (ENCADRÉS FLUIDES) --- */
-        .cards-grid-5 {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-        }
-
-        .cards-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        @media(max-width: 1200px) {
-            .cards-grid-5 { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .form-card {
-            background: rgba(10, 16, 12, 0.6);
-            border: 1px dashed var(--border);
-            border-radius: 10px;
-            padding: 20px 15px;
-            min-height: 160px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-card:hover {
-            border-color: var(--accent);
-            background: var(--panel-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-        }
-
-        .form-card-header {
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .form-card-body {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-style: italic;
-            text-align: center;
-            margin: auto 0;
-        }
-
-        .form-card-footer {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.3);
-            text-align: right;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 8px;
-        }
-
-        /* Grand encadré global / conduite / radio */
-        .large-box {
-            background: rgba(10, 16, 12, 0.6);
-            border: 1px dashed var(--border);
-            border-radius: 10px;
-            padding: 25px;
-            min-height: 140px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: all 0.3s ease;
-            color: var(--text-muted);
-            font-style: italic;
-            font-size: 0.9rem;
-        }
-
-        .large-box:hover {
-            border-color: var(--accent);
-            background: var(--panel-hover);
-            color: var(--text-main);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-        }
     </style>
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
-    <div class="scanline-grid"></div>
-
-    <div class="app-container">
-        <!-- BARRE LATÉRALE DE NAVIGATION -->
-        <aside class="sidebar">
-            <div class="brand-box">
-                <h2>S.A.B.P.</h2>
-                <p>Secure Terminal v3.0</p>
-            </div>
-
-            <nav class="nav-menu">
-                <button class="nav-btn active" onclick="switchTab('fac-section', this)">
-                    <span>■</span> Modules FAC (1 à 5)
-                </button>
-                <button class="nav-btn" onclick="switchTab('global-section', this)">
-                    <span>■</span> Formations Globales
-                </button>
-            </nav>
-
-            <div class="system-status">
-                <div class="pulse-dot"></div> SECURE LINK: STABLE
-            </div>
-        </aside>
-
-        <!-- ZONE DE CONTENU PRINCIPALE -->
-        <main class="main-content">
-
-            <!-- ONGLET 1 : FAC 1 à 5 -->
-            <div id="fac-section" class="tab-pane active">
-                <div class="section-header">
-                    <h3>Cursus d'Armement & Contrôle (FAC)</h3>
-                </div>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">Suivi détaillé et validation des modules d'armement et de contrôle opérationnel des agents.</p>
-
-                <!-- Les 5 encadrés FAC alignés proprement -->
-                <div class="cards-grid-5">
-                    <div class="form-card">
-                        <div class="form-card-header"><span>FAC 1</span></div>
-                        <div class="form-card-body">[ Module Vide ]</div>
-                        <div class="form-card-footer">STATUT: OUVERT</div>
-                    </div>
-                    <div class="form-card">
-                        <div class="form-card-header"><span>FAC 2</span></div>
-                        <div class="form-card-body">[ Module Vide ]</div>
-                        <div class="form-card-footer">STATUT: OUVERT</div>
-                    </div>
-                    <div class="form-card">
-                        <div class="form-card-header"><span>FAC 3</span></div>
-                        <div class="form-card-body">[ Module Vide ]</div>
-                        <div class="form-card-footer">STATUT: OUVERT</div>
-                    </div>
-                    <div class="form-card">
-                        <div class="form-card-header"><span>FAC 4</span></div>
-                        <div class="form-card-body">[ Module Vide ]</div>
-                        <div class="form-card-footer">STATUT: OUVERT</div>
-                    </div>
-                    <div class="form-card">
-                        <div class="form-card-header"><span>FAC 5</span></div>
-                        <div class="form-card-body">[ Module Vide ]</div>
-                        <div class="form-card-footer">STATUT: OUVERT</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ONGLET 2 : Formations Globales (Conduite & Radio) -->
-            <div id="global-section" class="tab-pane">
-                <div class="section-header">
-                    <h3>Formations Globales & Opérationnelles</h3>
-                </div>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">Validation des compétences transverses indispensables sur le terrain.</p>
-
-                <div class="cards-grid-2">
-                    <div>
-                        <span style="font-size: 0.8rem; font-weight: bold; color: var(--accent); display: block; margin-bottom: 8px; text-transform: uppercase;">Aptitude Conduite</span>
-                        <div class="large-box">
-                            [ Formation Globale : Conduite Tactique & Intervention ]
-                        </div>
-                    </div>
-                    <div>
-                        <span style="font-size: 0.8rem; font-weight: bold; color: var(--accent); display: block; margin-bottom: 8px; text-transform: uppercase;">Aptitude Radio</span>
-                        <div class="large-box">
-                            [ Formation Globale : Protocoles Radio & Communications ]
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
+    <!-- NAVIGATION -->
+    <div class="sidebar">
+        <h2 style="font-size: 1.2rem; margin-bottom: 30px;">S.A.B.P.</h2>
+        <div class="nav-item active">Centre de Dispatch</div>
+        <div class="nav-item">Requêtes & Rapports</div>
+        <div class="nav-item">Documentation</div>
+        <div class="nav-item">Gestion Unités</div>
     </div>
 
-    <script>
-        // --- SCRIPT DE NAVIGATION FLUIDE ENTRE LES ONGLETS ---
-        function switchTab(tabId, btnElement) {
-            // Masquer tous les panneaux
-            const panes = document.querySelectorAll('.tab-pane');
-            panes.forEach(pane => pane.classList.remove('active'));
+    <!-- DASHBOARD -->
+    <main class="main">
+        <div class="header-dash">
+            <div>
+                <h1 style="margin:0;">CENTRE DE DISPATCH</h1>
+                <p style="color:var(--text-muted); font-size: 0.9rem;">Pilotage opérationnel en temps réel.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div>UNITES</div><div style="font-size:1.4rem;">7</div></div>
+                <div class="stat-card"><div>ACTIVES</div><div style="font-size:1.4rem;">5</div></div>
+                <div class="stat-card"><div>AFFECTÉS</div><div style="font-size:1.4rem;">8</div></div>
+                <div class="stat-card"><div>ATTENTE</div><div style="font-size:1.4rem;">1</div></div>
+            </div>
+        </div>
 
-            // Désactiver tous les boutons de la sidebar
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+        <div class="control-panel">
+            <div class="filter-row">
+                <input type="text" class="filter-input" placeholder="Rechercher une unité...">
+                <button style="background:var(--accent-blue); border:none; padding:10px 20px; border-radius:6px; color:white;">FILTRER</button>
+            </div>
+            
+            <div class="agent-list">
+                <div class="agent-card">
+                    <div class="avatar"></div>
+                    <div>
+                        <div style="font-weight:bold;">T. Santos</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted);">En attente de dispatch</div>
+                    </div>
+                </div>
+                <div class="agent-card">
+                    <div class="avatar"></div>
+                    <div>
+                        <div style="font-weight:bold;">O. Taylor</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted);">En patrouille active</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-            // Activer l'onglet cible et le bouton cliqué
-            document.getElementById(tabId).classList.add('active');
-            btnElement.classList.add('active');
-        }
-    </script>
-</body>
-</html>
 </body>
 </html>
